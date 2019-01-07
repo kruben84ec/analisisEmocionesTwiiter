@@ -1,0 +1,8 @@
+Version 2018-12-30
+1. Tener instalado Python 3.6 en Ubuntu 18.04
+2. Instalar lo siguiente:
+	2.1 sudo apt-get install python-pip
+	2.2 sudo pip install numpy
+	2.4 sudo pip install tweepy
+	2.5 sudo pip install textblob
+	2.6 sudo pip install matplotlib
