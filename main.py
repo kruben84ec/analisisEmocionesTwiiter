@@ -24,11 +24,11 @@ class listener(StreamListener):
  			#  print (data)
  			# tweet = data.split(',"text":"')[1]
  			# print (tweet)
- 			saveThis = tweet+","+username
- 			saveFile = open('twwiterDB4.csv', 'a')
- 			saveFile.write(saveThis)
- 			saveFile.write('/n')
- 			saveFile.close()
+ 			# saveThis = tweet+","+username
+ 			# saveFile = open('twwiterDB4.csv', 'a')
+ 			# saveFile.write(saveThis)
+ 			# saveFile.write('/n')
+ 			# saveFile.close()
  			return True
  		except BaseException:
  			print('Ha fallado on_data', str(e))
