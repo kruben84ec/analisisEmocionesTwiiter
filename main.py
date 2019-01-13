@@ -5,19 +5,28 @@ tweeter = configuracion.ApiTweetpy()
 api = tweeter.getApi()
 
 while True:
-	print("---------------------------------------------------------")
-	name = input("Ingresa al cuenta de tweeter que deseas sin @:")
-	user = api.get_user(name)
-	# número de tweets
-	tweetCount = 5
-	resultado = api.user_timeline(id=name, count=tweetCount, full_text=True)
+	try:
+		print("---------------------------------------------------------")
+		name = input("Ingresa al cuenta de tweeter que deseas sin @:")
+		user = api.get_user(name)
+		print(user.followers_count)
+		for friend in user.friends():
+			print(friend.screen_name)
+		# número de tweets
+		tweetCount = 5
+		resultado = api.user_timeline(id=name, count=tweetCount, full_text=True)
 
-	for tweet in resultado:
-		print(tweet.created_at)
-		print(tweeter.setText(tweet.user.location))
-		print(tweeter.setText(tweet.user.screen_name))
-		print(tweeter.setText(tweet.text))
-	print("---------------------------------------------------------")
+		for tweet in resultado:
+			print(tweet.retweeted_status)
+			print(tweet.created_at)
+			print(tweeter.setText(tweet.user.location))
+			print(tweeter.setText(tweet.user.screen_name))
+			print(tweeter.setText(tweet.text))
+
+		print("---------------------------------------------------------")
+	except Exception as e:
+		print('Ha fallado:', str(e))
+
 	continuar = input("¿Desea Continuar <S=si/N=no>?")
 
 	if(continuar[0].upper() == "N"):
