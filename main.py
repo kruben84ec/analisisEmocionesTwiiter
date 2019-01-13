@@ -1,6 +1,7 @@
 import setup as configuracion
 import json
-
+#REFENCIA https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline
+#https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/premium-operators
 tweeter = configuracion.ApiTweetpy()
 api = tweeter.getApi()
 
