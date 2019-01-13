@@ -1,17 +1,30 @@
 import setup as configuracion
-
+import json
 
 tweeter = configuracion.ApiTweetpy()
 api = tweeter.getApi()
-# usuario de twitter
-name = input("Ingresa al cuenta de tweeter que deseas sin @:")
-# número de tweets
-tweetCount = 10
 
-resultado = api.user_timeline(id=name, count=tweetCount)
+while True:
+	print("---------------------------------------------------------")
+	name = input("Ingresa al cuenta de tweeter que deseas sin @:")
+	user = api.get_user(name)
+	# número de tweets
+	tweetCount = 5
+	resultado = api.user_timeline(id=name, count=tweetCount, full_text=True)
 
-for tweet in resultado:
-	print(tweeter.setText(tweet.text))
+	for tweet in resultado:
+		print(tweet.created_at)
+		print(tweeter.setText(tweet.user.location))
+		print(tweeter.setText(tweet.user.screen_name))
+		print(tweeter.setText(tweet.text))
+	print("---------------------------------------------------------")
+	continuar = input("¿Desea Continuar <S=si/N=no>?")
+
+	if(continuar[0].upper() == "N"):
+		break
+
+
+
 
 # import tweepy
 # import csv
