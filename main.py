@@ -1,27 +1,23 @@
-#http://docs.tweepy.org/en/v3.5.0/getting_started.html
-import json
 import setup as configuracion
 
+
 tweeter = configuracion.ApiTweetpy()
-apiTweeter = tweeter.getApi()
+api = tweeter.getApi()
+# usuario de twitter
+name = input("Ingresa al cuenta de tweeter que deseas sin @:")
+# número de tweets
+tweetCount = 10
 
-publicTweets = apiTweeter.home_timeline()
+resultado = api.user_timeline(id=name, count=tweetCount)
 
-for tweet in publicTweets:
-	print (tweet.text)
-
+for tweet in resultado:
+	print(tweeter.setText(tweet.text))
 
 # import tweepy
 # import csv
 # import numpy
 # import time
 # import json
-# from textblob import TextBlob
-# #setup tweeter
-# from tweepy import Stream
-# from tweepy import OAuthHandler
-# from tweepy.streaming import StreamListener
-# from credenciales import * # agregamos las credenciales
 
 
 # class listener(StreamListener):
