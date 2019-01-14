@@ -9,16 +9,15 @@ while True:
 	try:
 		print("---------------------------------------------------------")
 		name = input("Ingresa al cuenta de tweeter que deseas sin @:")
-		user = api.get_user(name)
-		print(user.followers_count)
-		for friend in user.friends():
-			print(friend.screen_name)
-		# número de tweets
+		# user = api.get_user(name)
+		# print(user.followers_count)
+		# for friend in user.friends():
+		# 	print(friend.screen_name)
+		# # número de tweets
 		tweetCount = 5
 		resultado = api.user_timeline(id=name, count=tweetCount, full_text=True)
 
 		for tweet in resultado:
-			print(tweet.retweeted_status)
 			print(tweet.created_at)
 			print(tweeter.setText(tweet.user.location))
 			print(tweeter.setText(tweet.user.screen_name))
