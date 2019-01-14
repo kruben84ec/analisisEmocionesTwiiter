@@ -6,3 +6,6 @@ Version 2018-12-30
 	2.4 sudo pip install tweepy
 	2.5 sudo pip install textblob
 	2.6 sudo pip install matplotlib
+	2.7 sudo pip install nltk
+	2.8 sudo pip install translate
+
