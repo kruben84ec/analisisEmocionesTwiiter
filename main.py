@@ -14,7 +14,7 @@ while True:
 		# for friend in user.friends():
 		# 	print(friend.screen_name)
 		# # número de tweets
-		tweetCount = 5
+		tweetCount = int(input("Número de tweets"))
 		resultado = api.user_timeline(id=name, count=tweetCount, full_text=True)
 
 		for tweet in resultado:
