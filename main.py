@@ -1,12 +1,7 @@
 import setup as configuracion
-import json
 import csv
 import pandas as pd
 import tweepy
-#REFENCIA https://developer.twitter.com/en/docs/tweets/timelines/api-reference/get-statuses-user_timeline
-#https://developer.twitter.com/en/docs/tweets/rules-and-filtering/overview/premium-operators
-#https://gist.github.com/yanofsky/5436496
-#https://github.com/Jefferson-Henrique/GetOldTweets-python
 tweeter = configuracion.ApiTweetpy()
 api = tweeter.getApi()
 results = []
@@ -18,11 +13,12 @@ for tweet in tweepy.Cursor(api.search,
 	until="2019-12-12", 
 	wait_on_rate_limit_notify=True,
 	lang="es",
-	src="typd").items(100):
+	src="typd",
+	tweet_mode="extended").items(5):
 	results.append(tweet)
-#https://twitter.com/search?l=es&q=BancoPichincha%20-Barcelona%20since%3A2018-12-12%20until%3A2019-01-20&src=typd&lang=es
+	
 for tweet in results:
-	print("(" + str(tweet.created_at) + ": " +tweeter.setText(tweet.text) + ")")
+	print("(" + str(tweet.created_at) + ":  "+ tweeter.setText(tweet.author.name) +" :  "+str(tweet.author.followers_count)+" " + tweeter.setText(tweet.full_text) + "  )")
 
 
 
