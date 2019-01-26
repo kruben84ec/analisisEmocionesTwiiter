@@ -1,10 +1,13 @@
 import setup as configuracion
 import csv
 import pandas as pd
+import numpy as np
 import tweepy
 tweeter = configuracion.ApiTweetpy()
 api = tweeter.getApi()
 results = []
+
+tweetDataSet = [];
 for tweet in tweepy.Cursor(api.search, 
 	q="BancoPichincha -BARCELONASC -UCATOLICAGYE",
 	include_entities=True,
@@ -14,7 +17,7 @@ for tweet in tweepy.Cursor(api.search,
 	wait_on_rate_limit_notify=True,
 	lang="es",
 	src="typd",
-	tweet_mode="extended").items(1):
+	tweet_mode="extended").items(10):
 	results.append(tweet)
 	
 for tweet in results:
@@ -22,8 +25,19 @@ for tweet in results:
 	fechaCreacion = str(tweet.created_at)
 	autor = tweeter.setText(tweet.author.name)
 	seguidores = str(tweet.author.followers_count)
+	idTweeter = tweet.id_str
+	reTweet = str(tweet.retweet_count)
+	idioma = tweet.lang
+	geolocation = tweeter.setText(tweet.user.location)
+	cuentaTweet = tweeter.setText(tweet.user.screen_name)
+	tweetRegistro = {
+		'idTweeter': idTweeter, 
+		'fecha': fechaCreacion, 
+		'autor': autor
+	}
+	tweetDataSet.append(tweetRegistro)
 
-	print("(" +fechaCreacion+ ":  "+autor+" :  "+seguidores+" " +textTweet+ "  )")
+print(tweetDataSet)
 
 
 
