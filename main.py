@@ -9,16 +9,21 @@ for tweet in tweepy.Cursor(api.search,
 	q="BancoPichincha -BARCELONASC -UCATOLICAGYE",
 	include_entities=True,
 	wait_on_rate_limit=True,
-	since="2018-12-12", 
-	until="2019-12-12", 
+	since="2018-12-15", 
+	until="2019-01-27", 
 	wait_on_rate_limit_notify=True,
 	lang="es",
 	src="typd",
-	tweet_mode="extended").items(5):
+	tweet_mode="extended").items(1):
 	results.append(tweet)
 	
 for tweet in results:
-	print("(" + str(tweet.created_at) + ":  "+ tweeter.setText(tweet.author.name) +" :  "+str(tweet.author.followers_count)+" " + tweeter.setText(tweet.full_text) + "  )")
+	textTweet = tweeter.setText(tweet.full_text)
+	fechaCreacion = str(tweet.created_at)
+	autor = tweeter.setText(tweet.author.name)
+	seguidores = str(tweet.author.followers_count)
+
+	print("(" +fechaCreacion+ ":  "+autor+" :  "+seguidores+" " +textTweet+ "  )")
 
 
 
