@@ -1,8 +1,8 @@
 import setup as configuracion
-import csv
-import pandas as pd
-import numpy as np
+import limpieza as clean
 import tweepy
+
+limpiar = clean.Clean_Tweet()
 tweeter = configuracion.ApiTweetpy()
 api = tweeter.getApi()
 results = []
@@ -17,11 +17,12 @@ for tweet in tweepy.Cursor(api.search,
 	wait_on_rate_limit_notify=True,
 	lang="es",
 	src="typd",
-	tweet_mode="extended").items(10):
+	tweet_mode="extended").items(1):
 	results.append(tweet)
 	
 for tweet in results:
 	textTweet = tweeter.setText(tweet.full_text)
+	tweetLimpio = limpiar.get_textClean(textTweet).upper()
 	fechaCreacion = str(tweet.created_at)
 	autor = tweeter.setText(tweet.author.name)
 	seguidores = str(tweet.author.followers_count)
@@ -30,11 +31,19 @@ for tweet in results:
 	idioma = tweet.lang
 	geolocation = tweeter.setText(tweet.user.location)
 	cuentaTweet = tweeter.setText(tweet.user.screen_name)
-	tweetRegistro = {
-		'idTweeter': idTweeter, 
-		'fecha': fechaCreacion, 
-		'autor': autor
-	}
+	tweetRegistro = [
+		 idTweeter, 
+		 fechaCreacion, 
+		 autor,
+		 geolocation,
+		 cuentaTweet,
+		 seguidores,
+		 reTweet,
+		 textTweet,
+		 tweetLimpio,
+		 geolocation
+
+	]
 	tweetDataSet.append(tweetRegistro)
 
 print(tweetDataSet)

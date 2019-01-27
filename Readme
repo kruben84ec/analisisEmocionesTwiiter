@@ -8,6 +8,7 @@ Version 2018-12-30
 	2.6 sudo pip install matplotlib
 	2.7 sudo pip install nltk
 	2.8 sudo pip install translate
+	2.9 sudo pip install xlsxwriter
 Referenciaas
 https://www.pybonacci.org/2015/11/24/como-hacer-analisis-de-sentimiento-en-espanol-2/
 3. https://medium.com/datos-y-ciencia/preprocesamiento-de-datos-de-texto-un-tutorial-en-python-5db5620f1767  normailizar y limpiar
