@@ -5,8 +5,13 @@ from textblob import TextBlob
 class Polaridad():
 
 	def get_polaridad(self, text):
-		text = self.get_traductor(text, "spanish", "english")
-		polaridad = TextBlob(text)
+		frases = ""
+		analizarTexto = ""
+		frases = text
+		analizarTexto = self.get_traductor(frases, "spanish", "english")
+
+		polaridad = TextBlob(analizarTexto)
+		print(polaridad.sentiment)
 		return polaridad.sentiment
 
 	def get_traductor(self, text, entrada, salida):

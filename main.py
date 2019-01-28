@@ -4,6 +4,7 @@ import polaridad as polaridadClase
 import csvGenerate as csvTool
 import tweepy
 import time
+from datetime import date
 
 csvGenerar = csvTool.CSV_py()
 analizarPolaridad = polaridadClase.Polaridad()
@@ -35,13 +36,16 @@ while True:
 		print("---------------------------------------------------------")
 		name = input("Ingresa al cuenta de tweeter que deseas sin @:")
 		tweetCount = int(input("Numero de tweets: "))
-		print("Empezo: "+str(time.strftime("%H:%M:%S")))
+		fechaFin = str(input("Ingresa la fecha de fin: "))
+		fechaFin = date(*map(int, fechaFin.split('-')))
+		horaInicio = time.strftime("%H:%M:%S")
+		print("Empezo: "+horaInicio)
 		for tweet in tweepy.Cursor(api.search, 
 			q=" "+name+" -BARCELONASC -UCATOLICAGYE",
 			include_entities=True,
 			wait_on_rate_limit=True,
 			since="2018-12-15", 
-			until="2019-01-28", 
+			until= fechaFin, 
 			wait_on_rate_limit_notify=True,
 			lang="es",
 			src="typd",
@@ -76,7 +80,9 @@ while True:
 
 		nombreArchivo = name+"_"+fechaArchivo
 		csvGenerar.generar_csv(nombreArchivo, tweetHead, tweetDataSet)	
-		print("Termino: "+str(time.strftime("%H:%M:%S")))	
+		horaFin = time.strftime("%H:%M:%S")
+		print("Termino: "+horaFin)		
+		print("Proceso: "+ str(len(tweetDataSet)))
 		print("---------------------------------------------------------")
 	except Exception as e:
 		print('Ha fallado:', str(e))
