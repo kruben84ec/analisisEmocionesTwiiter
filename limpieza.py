@@ -15,6 +15,15 @@ class Clean_Tweet():
 	def remover_retweet(self, words):
 		return words.replace("RT", "")
 
+	def remover_location(self, words):
+		words.replace("GUA", "GUAYAQUIL")
+		words.replace("QUI", "QUITO")
+		words.replace("CUE", "CUENCA")
+		words.replace("ESM", "ESMERALDAS")
+		words.replace("SANT", "SANTO DOMINGO")
+		words.replace("MACH", "MACHALA")
+		return words
+
 	def strip_html(self, text):
 		soup = BeautifulSoup(text, "html.parser")
 		return soup.get_text()

@@ -1,20 +1,15 @@
-#ejemplo de setimientos
+
 from translate import Translator
 from textblob import TextBlob
-# translator = Translator(from_lang="spanish", to_lang="english")
-# translation = translator.translate("AHORA SI  ESTADIO MONUMENTAL bancopichincha VA REGRESANDO NIVEL  SIEMPRE DEBIO TENER  HERMOSA NUESTRA")
-
-# # print(translation.upper())
-# frase = translation.upper()
-# analysis = TextBlob(frase)
-# print(analysis.sentiment)
 
 class Polaridad():
 
 	def get_polaridad(self, text):
-		return text
+		text = self.get_traductor(text, "spanish", "english")
+		polaridad = TextBlob(text)
+		return polaridad.sentiment
 
-	def get_traductor(self, text, configuracion):
-		translator = Translator(from_lang=configuracion.entrada, to_lang= configuracion.out)
+	def get_traductor(self, text, entrada, salida):
+		translator = Translator(from_lang = entrada, to_lang = salida)
 		traduccion = translator.translate(text)
 		return traduccion.upper()
