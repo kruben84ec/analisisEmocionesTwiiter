@@ -9,9 +9,8 @@ class Polaridad():
 		analizarTexto = ""
 		frases = text
 		analizarTexto = self.get_traductor(frases, "spanish", "english")
-
 		polaridad = TextBlob(analizarTexto)
-		print(polaridad.sentiment)
+		# print(polaridad.sentiment)
 		return polaridad.sentiment
 
 	def get_traductor(self, text, entrada, salida):

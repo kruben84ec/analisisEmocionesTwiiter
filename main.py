@@ -38,13 +38,13 @@ while True:
 		tweetCount = int(input("Numero de tweets: "))
 		fechaFin = str(input("Ingresa la fecha de fin: "))
 		fechaFin = date(*map(int, fechaFin.split('-')))
-		horaInicio = time.strftime("%H:%M:%S")
+		horaInicio = str(time.strftime("%H:%M:%S"))
 		print("Empezo: "+horaInicio)
 		for tweet in tweepy.Cursor(api.search, 
-			q=" "+name+" -BARCELONASC -UCATOLICAGYE",
+			q=name,
 			include_entities=True,
 			wait_on_rate_limit=True,
-			since="2018-12-15", 
+			since="2018-01-01", 
 			until= fechaFin, 
 			wait_on_rate_limit_notify=True,
 			lang="es",
@@ -78,9 +78,9 @@ while True:
 			]
 			tweetDataSet.append(tweetRegistro)
 
-		nombreArchivo = name+"_"+fechaArchivo
+		nombreArchivo = name+"_"+fechaArchivo+"_"+str(time.strftime("%S"))
 		csvGenerar.generar_csv(nombreArchivo, tweetHead, tweetDataSet)	
-		horaFin = time.strftime("%H:%M:%S")
+		horaFin = str(time.strftime("%H:%M:%S"))
 		print("Termino: "+horaFin)		
 		print("Proceso: "+ str(len(tweetDataSet)))
 		print("---------------------------------------------------------")
