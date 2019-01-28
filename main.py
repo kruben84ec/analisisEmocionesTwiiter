@@ -35,7 +35,6 @@ for tweet in results:
 		 idTweeter, 
 		 fechaCreacion, 
 		 autor,
-		 geolocation,
 		 cuentaTweet,
 		 seguidores,
 		 reTweet,

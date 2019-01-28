@@ -11,6 +11,7 @@ class Clean_Tweet():
 
 	def __init__(self):
 		self.tweetClean = ""
+		
 	def remover_retweet(self, words):
 		return words.replace("RT", "")
 
